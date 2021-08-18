@@ -1,0 +1,64 @@
+name: E5-Rclone-Actions-Repo
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 0 22 0 * *
+  watch:
+    types: started
+jobs:
+  run-it:
+    runs-on: ubuntu-latest
+    name: zip
+    steps:
+
+      - name: Checkout codes
+        uses: actions/checkout@v2
+
+      - name: Install rclone #安装rclone
+        run: curl https://rclone.org/install.sh | sudo bash
+
+      - name: Unzip config #解压配置文件
+        run: |
+         mkdir -p ~/.config/rclone/
+         unzip -P ${{ secrets.PASSWD }} rclone.zip -d ~/.config/rclone/
+     
+      - name: Run rclone #运行rclone
+        run: |
+          
+          # 延迟函数
+          delay()
+          {
+          random_time=$(($RANDOM % $1))
+          echo "等待 ${random_time} 分钟后开始签到"
+          for((i=1;i<=${random_time};i++));  
+          do
+          echo "倒计时 $[${random_time}-$i] 分钟"
+          sleep 1m
+          done
+          }
+          # 随机延迟0~30分钟后再进行操作,可自行设置时间
+          delay 30
+
+          # 更改时区
+          sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          
+          # 列出文件(此处不展示)
+          echo "列出文件(此处不展示)"
+          rclone lsd e5:/ > "lsd.log"
+          rclone mkdir e5:/E5-Rclone-Actions-Repo/
+          rclone move lsd.log e5:/E5-Rclone-Actions-Repo/
+          rclone delete e5:/E5-Rclone-Actions-Repo/lsd.log
+          rclone rmdir e5:/E5-Rclone-Actions-Repo/
+      - name: Zip config #打包配置文件
+        run: zip -P ${{ secrets.PASSWD }} rclone.zip -j ~/.config/rclone/rclone.conf
+
+      - name: Commit config #提交配置文件
+        run: |
+         git config --global user.email "office@chirmyram.top"
+         git config --global user.name "ChirmyRam"
+         git add .
+         git commit -am "new rclone config"
+         git push
