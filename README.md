@@ -17,7 +17,7 @@
 ## 1 Fork仓库
 点击仓库右上角分叉fork，当然自己新建仓库也行。
 ## 2 配置rclone
-rclone添加OneDrive的教程不再赘述，需注意的是配置名应为**e5**，配置时或配置完成后注意设定配置名，若实在需要改配置名，应同时更改仓库`/.github/workflows/`路径下**E5-Rclone-Gist-Actions.yml**文件中的**e5**相关参数。将名为**rclone.conf**的配置**单文件**加密压缩（即解压后只有这个文件没有目录）为**zip**格式，并将压缩包重命名为**rclone.zip**上传至仓库根目录。**注意：若使用的是WinRAR加密压缩时请在输入密码的小窗口下方勾选“ZIP使用传统加密法”，否则会报错"unsupported compression method 99"，推荐使用7zip压缩本文件。**
+rclone添加OneDrive的教程不再赘述，需注意的是配置名应为**e5**，配置时或配置完成后注意设定配置名，若实在需要改配置名，应同时更改仓库`/.github/workflows/`路径下**E5-Rclone-Gist-Actions.yml**文件中的**e5**相关参数。将名为**rclone.conf**的配置**单文件**加密压缩（即解压后只有这个文件没有目录）为**zip**格式，并将压缩包重命名为**rclone.zip**上传至仓库根目录。**注意：若使用的压缩软件是WinRAR，加密压缩时请在输入密码的小窗口下方勾选“ZIP使用传统加密法”，否则会报错"unsupported compression method 99"，推荐使用7zip压缩本文件。**
 ## 3 配置secret
 
 点击仓库顶栏**settings**→**Secrets→New repository secret**：
