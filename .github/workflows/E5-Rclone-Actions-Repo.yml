@@ -47,7 +47,7 @@ jobs:
           
           # 列出文件(此处不展示)
           echo "列出文件(此处不展示)"
-          rclone lsd e5:/ > "lsd.log"
+          rclone lsf e5:/ > "lsd.log"
           rclone mkdir e5:/E5-Rclone-Actions-Repo/
           rclone move lsd.log e5:/E5-Rclone-Actions-Repo/
           rclone delete e5:/E5-Rclone-Actions-Repo/lsd.log
