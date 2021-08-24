@@ -46,6 +46,7 @@ jobs:
           sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           
           # 列出文件(此处不展示)
+          echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
           echo "列出文件(此处不展示)"
           rclone lsf e5:/ > "lsd.log"
           rclone mkdir e5:/E5-Rclone-Actions-Repo/
