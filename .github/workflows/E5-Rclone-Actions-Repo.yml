@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: 0 22 * * *
+    - cron: 0 22 1/2 * *
   watch:
     types: started
 jobs:
