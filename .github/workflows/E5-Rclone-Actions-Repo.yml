@@ -1,6 +1,7 @@
 name: E5-Rclone-Actions-Repo
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
