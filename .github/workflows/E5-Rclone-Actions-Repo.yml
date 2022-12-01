@@ -2,9 +2,6 @@ name: E5-Rclone-Actions-Repo
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
   schedule:
     - cron: 0 22 1/2 * *
 
