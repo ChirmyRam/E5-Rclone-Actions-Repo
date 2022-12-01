@@ -7,8 +7,7 @@ on:
       - main
   schedule:
     - cron: 0 22 1/2 * *
-  watch:
-    types: started
+
 jobs:
   run-it:
     runs-on: ubuntu-latest
