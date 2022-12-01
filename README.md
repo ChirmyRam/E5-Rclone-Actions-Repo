@@ -28,6 +28,4 @@ rclone添加OneDrive的教程不再赘述，需注意的是配置名应为**e5**
 ## 4. 启动actions
 点击仓库顶栏**Actions**→**I understand my workflows, go ahead and enable them**，手动enable两个workflow。
 
-- **E5-Rclone-Actions-Repo**：每天自动使用rclone上传文件到OneDrive。
-
-顺手star一下自己的仓库手动触发actions。
+在**Actions**中选择左侧**E5-Rclone-Actions-Repo**，点击右侧**Run workflow**手动运行测试一下是否正常。
